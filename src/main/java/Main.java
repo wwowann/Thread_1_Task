@@ -10,7 +10,6 @@ public class Main {
         new MyThread(nameThread2, myGroup).start();
         new MyThread(nameThread3, myGroup).start();
         new MyThread(nameThread4, myGroup).start();
-        new MyThread("поток 4.", myGroup).start();
         try {
             MyThread.sleep(5000);
         } catch (InterruptedException err) {
