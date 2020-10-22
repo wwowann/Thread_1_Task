@@ -1,20 +1,19 @@
 public class Main {
     public static void main(String[] args) {
         ThreadGroup myGroup = new ThreadGroup("mainGroup");
-        String nameThread1 = "поток 1.";
-        String nameThread2 = "поток 2.";
-        String nameThread3 = "поток 3.";
-        String nameThread4 = "поток 4.";
-
-        new MyThread(nameThread1, myGroup).start();
-        new MyThread(nameThread2, myGroup).start();
-        new MyThread(nameThread3, myGroup).start();
-        new MyThread(nameThread4, myGroup).start();
-        try {
-            MyThread.sleep(5000);
-        } catch (InterruptedException err) {
-            System.out.println("Время работы потока закончилось");
+        for (int i = 1; i < 11; i++) {
+            System.out.println("Запускаю поток");
+            String nameThread = "поток " + i;
+            int country = 0;
+            new MyThread(nameThread, myGroup, country).start();
+            try {
+                MyThread.sleep(2000);
+            } catch (InterruptedException err) {
+                System.out.println("Произошла ошибка");
+            }
         }
+        System.out.println("Завершаю все потоки");
+
         myGroup.destroy();
     }
 }
